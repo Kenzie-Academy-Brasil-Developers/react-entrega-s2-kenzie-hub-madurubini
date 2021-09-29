@@ -50,6 +50,8 @@ const Login = ({ auth, setAuth }) => {
   return (
     <>
       <form onSubmit={handleSubmit(handleLogin)}>
+        <h2>KenzieHub - Login</h2>
+
         <label>
           Email:
           <input
@@ -71,7 +73,9 @@ const Login = ({ auth, setAuth }) => {
 
         <button type="submit">Login</button>
       </form>
-      <button onClick={() => returnHome()}>Voltar para Home</button>
+      <div className="ButtonsForm">
+        <button onClick={() => returnHome()}>Voltar para Home</button>
+      </div>
     </>
   );
 };

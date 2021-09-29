@@ -4,12 +4,13 @@ form {
   align-items: center;
   justify-content: center;
   width: 60%;
+  border: 1px solid #493548;
+  border-radius: 5px;
+  padding: 1%;
 }
 
 label {
-  border-radius: 5px;
   width: 100%;
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -17,17 +18,32 @@ label {
   padding: 5px;
   flex-wrap: wrap;
   text-align: center;
+  margin: 2px;
 }
 
 input,
 select {
   width: 70%;
+  min-height: 25px;
+  border-radius: 5px;
+  border: 1px solid #493548;
+  padding: 2px;
 }
 textarea {
   width: 60%;
+  border-radius: 5px;
+  border: 1px solid #493548;
+  padding: 2px;
 }
 
 span {
   font-size: 10px;
   color: red;
+}
+
+.ButtonsForm {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5%;
 }

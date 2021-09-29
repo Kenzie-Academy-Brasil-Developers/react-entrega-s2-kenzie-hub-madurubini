@@ -1,0 +1,51 @@
+.Home {
+  margin: 1%;
+  border: 1px solid #493548;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 1%;
+}
+
+nav {
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  margin: 2%;
+}
+
+.ButtonsHome {
+  width: 50%;
+}
+
+.Home button {
+  width: 60%;
+}
+
+.ButtonsHome p {
+  font-weight: 600;
+  margin: 2%;
+}
+
+button {
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #9a94bc;
+  color: #493548;
+  border: 2px solid #493548;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+}
+
+button:hover {
+  filter: brightness(0.9);
+}

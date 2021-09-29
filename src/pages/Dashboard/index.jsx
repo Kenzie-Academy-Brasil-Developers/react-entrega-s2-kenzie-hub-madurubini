@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Redirect, useHistory } from "react-router";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import "./style.css";
 
 const Dashboard = ({ auth, setAuth }) => {
   const { register, handleSubmit } = useForm();
@@ -46,7 +47,8 @@ const Dashboard = ({ auth, setAuth }) => {
       )
       .then((response) => {
         setTech([...tech, response.data]);
-      });
+      })
+      .catch((err) => toast.error("Você já adicionou essa tecnologia"));
   };
 
   if (!auth) {
@@ -59,14 +61,17 @@ const Dashboard = ({ auth, setAuth }) => {
     history.push("/");
   };
   return (
-    <div>
-      <p>Olá, {userData.name}!</p>
+    <div className="Dashboard">
       <div className="BoxUserInfo">
+        <p>
+          Olá, <span>{userData.name}</span>!
+        </p>
+
         <p>Módulo: {userData.course_module}</p>
       </div>
       <div className="BoxTecInfo">
         <h2>Minhas Tecnologias</h2>
-        <form onSubmit={handleSubmit(postTech)}>
+        <form className="FormDash" onSubmit={handleSubmit(postTech)}>
           <input
             {...register("title")}
             type="text"
@@ -74,7 +79,7 @@ const Dashboard = ({ auth, setAuth }) => {
           ></input>
           <select {...register("status")}>
             <option disabled selected defaultChecked value="">
-              Escolha o nível de habilidade
+              Escolha o status da habilidade
             </option>
             <option value={"Iniciante"}>Iniciante</option>
             <option value={"Intermediário"}>Intermediário</option>
@@ -85,14 +90,14 @@ const Dashboard = ({ auth, setAuth }) => {
         <ul>
           {tech.map((item, index) => (
             <li key={index}>
-              <p>{item.title}</p>
-              <p>{item.status}</p>
+              <p className="Bold">{item.title}</p>
+              <p>Status: {item.status}</p>
               <button onClick={() => deleteTech(item.id)}>Remover</button>
             </li>
           ))}
         </ul>
       </div>
-      <button onClick={() => Logout()}>Sair</button>
+      <button onClick={() => Logout()}>Logout</button>
     </div>
   );
 };

@@ -53,12 +53,12 @@ const SignUpForm = ({ auth }) => {
   }
   return (
     <>
-      <h2>Formulário de Cadastro</h2>
-      <p>
-        Seja bem-vinde. Para acessar é necessário se cadastrar no formulário
-        abaixo
-      </p>
       <form onSubmit={handleSubmit(sendData)}>
+        <h2>Formulário de Cadastro</h2>
+        <p>
+          Seja bem-vinde. Para acessar é necessário se cadastrar no formulário
+          abaixo
+        </p>
         <label>
           Informe seu nome:
           <input
@@ -140,7 +140,9 @@ const SignUpForm = ({ auth }) => {
 
         <button type="submit">Cadastrar</button>
       </form>
-      <button onClick={() => returnHome()}>Voltar para Home</button>
+      <div className="ButtonsForm">
+        <button onClick={() => returnHome()}>Voltar para Home</button>
+      </div>
     </>
   );
 };
