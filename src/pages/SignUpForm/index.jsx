@@ -1,14 +1,12 @@
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./style.css";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 
-const SignUpForm = () => {
-  const [dataForm, setDataForm] = useState("");
+const SignUpForm = ({ auth }) => {
   const formSchema = yup.object().shape({
     name: yup.string().required("Nome Obrigatório"),
     email: yup.string().email("Email inválido").required("Campo Obrigatório"),
@@ -37,7 +35,6 @@ const SignUpForm = () => {
 
   function sendData({ name, email, password, bio, contact, course_module }) {
     const user = { name, email, password, bio, contact, course_module };
-    console.log(user);
     api
       .post("/users", user)
       .then((_) => {
@@ -50,6 +47,10 @@ const SignUpForm = () => {
   const returnHome = () => {
     history.push("/");
   };
+
+  if (auth) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <>
       <h2>Formulário de Cadastro</h2>

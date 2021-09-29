@@ -1,11 +1,15 @@
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 
-const Home = () => {
+const Home = ({ auth }) => {
   const history = useHistory();
 
   const handleNavigation = (path) => {
     return history.push(path);
   };
+
+  if (auth) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <div>
@@ -14,7 +18,7 @@ const Home = () => {
       <nav>
         <p>Você é novo por aqui?</p>
         <button onClick={() => handleNavigation("/signup")}>Cadastre-se</button>
-        <p>Já sou cadastrado</p>
+        <p>Já é cadastrado?</p>
         <button onClick={() => handleNavigation("/login")}>Login</button>
       </nav>
     </div>
